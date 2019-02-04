@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace BibliotecaTeca.Repositories
 {
     public interface ILivroRepository
-    {        
+    {
+        void SaveLivro(Livro livro);            
     }
 }

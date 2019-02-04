@@ -31,5 +31,6 @@ namespace BibliotecaTeca
             modelBuilder.Entity<Pedido>().HasOne(t => t.Aluguel);
             modelBuilder.Entity<Pedido>().HasMany(p => p.Livros).WithOne(p => p.Pedido);
         }
+        public DbSet<BibliotecaTeca.Models.Livro> Livro { get; set; }
     }
 }
