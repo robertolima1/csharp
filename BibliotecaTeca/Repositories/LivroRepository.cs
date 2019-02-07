@@ -12,10 +12,15 @@ namespace BibliotecaTeca.Repositories
         {
         }
 
+        public List<Livro> ListLivro()
+        {
+            return this.dbSet.ToList();
+        }
+
         public void SaveLivro(Livro livro)
         {
-            dbSet.Add(livro);
-            contexto.SaveChanges();
+            this.dbSet.Add(livro);
+            this.contexto.SaveChanges();
         }
     }
 }

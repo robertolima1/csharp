@@ -18,6 +18,10 @@ namespace BibliotecaTeca.Models
             Preco = preco;
             DataPostagem = dataPostagem;
         }
+        public Livro()
+        {
+
+        }
 
         [Required]
         public string Nome { get; set; }

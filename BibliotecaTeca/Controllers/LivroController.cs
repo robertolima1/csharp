@@ -22,6 +22,7 @@ namespace BibliotecaTeca.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
@@ -30,6 +31,13 @@ namespace BibliotecaTeca.Controllers
             Livro livro = new Livro("", 0, new DateTime());            
             return View();
         }
-     
+
+        [HttpPost]
+        public IActionResult CadastroItem(Livro livro)
+        {
+            this.livroRepository.SaveLivro(livro);
+            return RedirectToAction("Index");
+        }
+
     }
 }

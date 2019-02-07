@@ -8,6 +8,7 @@ namespace BibliotecaTeca.Repositories
 {
     public interface ILivroRepository
     {
-        void SaveLivro(Livro livro);            
+        void SaveLivro(Livro livro);
+        List<Livro> ListLivro();
     }
 }
