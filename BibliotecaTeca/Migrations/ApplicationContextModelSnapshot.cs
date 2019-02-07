@@ -64,13 +64,11 @@ namespace BibliotecaTeca.Migrations
                     b.Property<string>("Nome")
                         .IsRequired();
 
-                    b.Property<long>("PedidoId");
-
                     b.Property<decimal>("Preco");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Quantidade");
 
-                    b.HasIndex("PedidoId");
+                    b.HasKey("Id");
 
                     b.ToTable("Livro");
                 });
@@ -83,9 +81,13 @@ namespace BibliotecaTeca.Migrations
 
                     b.Property<long>("AluguelId");
 
+                    b.Property<long>("LivroId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AluguelId");
+
+                    b.HasIndex("LivroId");
 
                     b.ToTable("Pedido");
                 });
@@ -98,19 +100,16 @@ namespace BibliotecaTeca.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BibliotecaTeca.Models.Livro", b =>
-                {
-                    b.HasOne("BibliotecaTeca.Models.Pedido", "Pedido")
-                        .WithMany("Livros")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("BibliotecaTeca.Models.Pedido", b =>
                 {
                     b.HasOne("BibliotecaTeca.Models.Aluguel", "Aluguel")
                         .WithMany("Pedidos")
                         .HasForeignKey("AluguelId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BibliotecaTeca.Models.Livro", "Livro")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("LivroId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

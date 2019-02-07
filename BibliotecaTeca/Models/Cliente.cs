@@ -22,7 +22,7 @@ namespace BibliotecaTeca.Models
         public string Email { get; set; }
 
         [Required]
-        public List<Aluguel> Alugueis { get; set; }
+        public ICollection<Aluguel> Alugueis { get; set; }
 
     }
 }

@@ -10,14 +10,8 @@ namespace BibliotecaTeca.Models
     [DataContract]
     public class Pedido : BaseModel
     {
-        public Pedido()
-        {            
-                 
-        }
-        
         [Required]
-        public List<Livro> Livros { get; set; }
-
+        public virtual Livro Livro { get; set; }
 
         [Required]
         public Aluguel Aluguel { get; set; }

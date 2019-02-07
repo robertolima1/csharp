@@ -11,12 +11,13 @@ namespace BibliotecaTeca.Models
     [DataContract]
     public class Livro : BaseModel
     {
-        public Livro(string nome, decimal preco, DateTime dataPostagem)
+        public Livro(string nome, decimal preco, DateTime dataPostagem, int quantidade)
         {
          
             Nome = nome;
             Preco = preco;
             DataPostagem = dataPostagem;
+            Quantidade = quantidade;
         }
         public Livro()
         {
@@ -33,6 +34,8 @@ namespace BibliotecaTeca.Models
         public DateTime DataPostagem { get; set; }
 
         [Required]
-        public Pedido Pedido { get; set; }
+        public int Quantidade { get; set; }
+
+        public ICollection<Pedido> Pedidos { get; set; }
     }
 }

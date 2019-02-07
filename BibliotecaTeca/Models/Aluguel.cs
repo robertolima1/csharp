@@ -20,6 +20,6 @@ namespace BibliotecaTeca.Models
         public List<Pedido> Pedidos { get; set; }
 
         [Required]
-        public Cliente Cliente { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

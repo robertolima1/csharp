@@ -28,7 +28,7 @@ namespace BibliotecaTeca.Controllers
 
         public IActionResult Cadastro()
         {
-            Livro livro = new Livro("", 0, new DateTime());            
+            Livro livro = new Livro("", 0, new DateTime(), 0);            
             return View();
         }
 
