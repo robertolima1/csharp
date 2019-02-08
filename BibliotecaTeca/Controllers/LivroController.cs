@@ -22,8 +22,9 @@ namespace BibliotecaTeca.Controllers
 
         public IActionResult Index()
         {
+            
 
-            return View();
+            return View(this.livroRepository.ListLivro());
         }
 
         public IActionResult Cadastro()
@@ -37,6 +38,16 @@ namespace BibliotecaTeca.Controllers
         {
             this.livroRepository.SaveLivro(livro);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Editar(long idLivro)
+        {
+            return View();
+        }
+
+        public IActionResult Excluir(long idLivro)
+        {
+            return View();
         }
 
     }
