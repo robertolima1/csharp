@@ -41,18 +41,18 @@ namespace BibliotecaTeca.Controllers
         }
 
         [HttpPost]
-        public IActionResult Alugar(long idLivro)
+        public IActionResult Alugar(long id)
         {                   
             return RedirectToAction("Index");
         }
 
-        public IActionResult Editar(long idLivro)
+        public IActionResult Editar(long id)
         {
-            Livro livro = this.livroRepository.GetLivro(idLivro);
+            Livro livro = this.livroRepository.GetLivro(id);
             return View(livro);
         }
 
-        public IActionResult Excluir(long idLivro)
+        public IActionResult Excluir(long id)
         {
             return View();
         }

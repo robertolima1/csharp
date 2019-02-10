@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace BibliotecaTeca
 {
@@ -35,7 +36,16 @@ namespace BibliotecaTeca
 
 
            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-           string connectionString = Configuration.GetConnectionString("ConnectionBase");
+
+            //Adicionando o servico  cache distribuido
+            services.AddDistributedMemoryCache();
+            //Adicionando o servico de Sessão
+            services.AddSession();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
+            string connectionString = Configuration.GetConnectionString("ConnectionBase");
            services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connectionString));
 
@@ -65,6 +75,7 @@ namespace BibliotecaTeca
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

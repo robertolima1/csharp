@@ -18,6 +18,8 @@ namespace BibliotecaTeca.Repositories
             this.contexto = contexto;
             dbSet = contexto.Set<T>();
         }
+
+
     }
 
 }
