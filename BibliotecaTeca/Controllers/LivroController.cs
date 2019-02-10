@@ -40,9 +40,16 @@ namespace BibliotecaTeca.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult Alugar(long idLivro)
+        {                   
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Editar(long idLivro)
         {
-            return View();
+            Livro livro = this.livroRepository.GetLivro(idLivro);
+            return View(livro);
         }
 
         public IActionResult Excluir(long idLivro)
@@ -50,5 +57,9 @@ namespace BibliotecaTeca.Controllers
             return View();
         }
 
+        public IActionResult Carrinho()
+        {
+            return View();
+        }
     }
 }

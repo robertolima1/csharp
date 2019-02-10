@@ -12,6 +12,11 @@ namespace BibliotecaTeca.Repositories
         {
         }
 
+        public Livro GetLivro(long idLivro)
+        {
+            return this.dbSet.Find(idLivro);
+        }
+
         public List<Livro> ListLivro()
         {
             return this.dbSet.ToList();
