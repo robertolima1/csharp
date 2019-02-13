@@ -11,5 +11,7 @@ namespace BibliotecaTeca.Repositories
         void SaveLivro(Livro livro);
         List<Livro> ListLivro();
         Livro GetLivro(long idLivro);
+        void DropLivro(long id);
+        void UpdateLivro(Livro livro);
     }
 }

@@ -17,6 +17,13 @@ namespace BibliotecaTeca.Repositories
           this.contextAccessor = contextAccessor;
         }
 
+        public void DropLivro(long id)
+        {
+            Livro livro = this.dbSet.FirstOrDefault(l => l.Id == id);
+            this.dbSet.Remove(livro);
+            this.contexto.SaveChanges();
+        }
+
         public Livro GetLivro(long idLivro)
         {
             return this.dbSet
@@ -31,6 +38,12 @@ namespace BibliotecaTeca.Repositories
         public void SaveLivro(Livro livro)
         {
             this.dbSet.Add(livro);
+            this.contexto.SaveChanges();
+        }
+
+        public void UpdateLivro(Livro livro)
+        {
+            this.dbSet.Update(livro);
             this.contexto.SaveChanges();
         }
 

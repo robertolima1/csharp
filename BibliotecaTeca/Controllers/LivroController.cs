@@ -41,6 +41,13 @@ namespace BibliotecaTeca.Controllers
         }
 
         [HttpPost]
+        public IActionResult EditarItem(Livro livro)
+        {
+            this.livroRepository.UpdateLivro(livro);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public IActionResult Alugar(long id)
         {                   
             return RedirectToAction("Index");
@@ -54,7 +61,8 @@ namespace BibliotecaTeca.Controllers
 
         public IActionResult Excluir(long id)
         {
-            return View();
+            this.livroRepository.DropLivro(id);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Carrinho()
