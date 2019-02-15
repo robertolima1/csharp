@@ -1,5 +1,6 @@
 ﻿using BibliotecaTeca.Models;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,17 +49,47 @@ namespace BibliotecaTeca.Repositories
         }
 
         //Recupera o código do pedido da sessão
-        private int? GetContLivro()
+        public int? GetContLivro()
         {
             return contextAccessor.HttpContext.Session.GetInt32("contLivro");
         }
 
         //Adiciona o código do pedido na sessão
-        private void SetContLivro(int livro)
+        public void SetContLivro(long idLivro)
         {
             int cont = this.GetContLivro().HasValue ? this.GetContLivro().Value : 0;
-            contextAccessor.HttpContext.Session.SetInt32("contLivro", cont + livro);
+            contextAccessor.HttpContext.Session.SetInt32("contLivro", cont + 1);            
 
+        }
+
+        public List<string> GetListPedido()
+        {
+            string pedidos =  contextAccessor.HttpContext.Session.GetString("Pedidos");
+            List<string> pedidosJson = null;
+            if (pedidos != null)
+            {
+                pedidosJson = JsonConvert.DeserializeObject<List<string>>(pedidos);                
+            }
+            return pedidosJson;
+        }
+
+        public void SetListPedido(long idLivro)
+        {
+            List<string> pedidos = this.GetListPedido();
+            if (pedidos != null)
+            {
+                pedidos.Add(idLivro.ToString());
+                string json = JsonConvert.SerializeObject(pedidos);
+                contextAccessor.HttpContext.Session.SetString("Pedidos", json);
+
+            }
+            else
+            {
+                List<string> pedidosNovos = new List<string>();
+                pedidosNovos.Add(idLivro.ToString());
+                string json = JsonConvert.SerializeObject(pedidosNovos);
+                contextAccessor.HttpContext.Session.SetString("Pedidos", json);
+            }   
         }
     }
 }

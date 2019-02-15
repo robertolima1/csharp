@@ -46,10 +46,10 @@ namespace BibliotecaTeca.Controllers
             this.livroRepository.UpdateLivro(livro);
             return RedirectToAction("Index");
         }
-
-        [HttpPost]
+        
         public IActionResult Alugar(long id)
-        {                   
+        {
+            this.livroRepository.SetListPedido(id);
             return RedirectToAction("Index");
         }
 

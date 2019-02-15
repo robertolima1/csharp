@@ -13,5 +13,8 @@ namespace BibliotecaTeca.Repositories
         Livro GetLivro(long idLivro);
         void DropLivro(long id);
         void UpdateLivro(Livro livro);
+        int? GetContLivro();
+        void SetContLivro(long idLivro);
+        void SetListPedido(long idLivro);
     }
 }
