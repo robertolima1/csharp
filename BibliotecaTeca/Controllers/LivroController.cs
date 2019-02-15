@@ -66,8 +66,8 @@ namespace BibliotecaTeca.Controllers
         }
 
         public IActionResult Carrinho()
-        {
-            return View();
+        {   
+            return View(this.livroRepository.ListLivroInCarrinho());
         }
     }
 }

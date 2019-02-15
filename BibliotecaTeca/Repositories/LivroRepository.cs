@@ -91,6 +91,18 @@ namespace BibliotecaTeca.Repositories
                 contextAccessor.HttpContext.Session.SetString("Pedidos", json);
             }   
         }
+
+        public List<Livro> ListLivroInCarrinho()
+        {
+            List<long> livros = this.GetListPedido().Select( id => Convert.ToInt64(id)).ToList();
+            return this.dbSet
+                    .Where(livro => 
+                        livros
+                        .Contains(livro.Id))
+                        .ToList();
+
+
+        }
     }
 }
 

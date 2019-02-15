@@ -16,5 +16,6 @@ namespace BibliotecaTeca.Repositories
         int? GetContLivro();
         void SetContLivro(long idLivro);
         void SetListPedido(long idLivro);
+        List<Livro> ListLivroInCarrinho();
     }
 }
