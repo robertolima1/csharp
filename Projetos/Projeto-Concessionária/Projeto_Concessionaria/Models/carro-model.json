@@ -1,0 +1,45 @@
+db.createCollection("carro",{"validator" : {
+        "$jsonSchema" : {
+            "bsonType" : "object",
+            "required" : [ 
+                "nome", 
+                "marca", 
+                "ano"
+            ],
+            "properties" : {
+                "_id" : {
+                    "bsonType" : "objectId"
+                },
+                "nome" : {
+                    "bsonType" : "string",
+                    "description" : "required and must be a string"
+                },
+                "marca" : {
+                    "enum" : [ 
+                        "HONDA", 
+                        "FORD", 
+                        "HYUNDAI", 
+                        "FIAT"
+                    ],
+                    "description" : "can be only HONDA, FORD, HYUNDAI or FIAT"
+                },
+                "ano" : {
+                    "bsonType" : "int",
+                    "minimum" : 1900.0,
+                    "maximum" : 2019.0,
+                    "description" : "the value must be in the range 1900-2018"
+                },
+                "peca.nome" : {
+                    "bsonType" : "string",
+                    "description" : "required and must be a string"
+                },
+                "peca.quantidade" : {
+                    "bsonType" : "int",
+                    "minimum" : 1.0,
+                    "maximum" : 10.0,
+                    "description" : "the value must be in the range 0-10"
+                }
+            }
+        }
+    }
+}
